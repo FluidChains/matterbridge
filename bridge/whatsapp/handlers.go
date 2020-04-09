@@ -82,9 +82,9 @@ func (b *Bwhatsapp) HandleTextMessage(message whatsapp.TextMessage) {
 
 	// translate sender's JID to the nicest username we can get
 	senderName := b.getSenderName(senderJID)
-	if senderName == "" {
+	/*if senderName == "" {
 		senderName = "Someone" // don't expose telephone number
-	}
+	}*/
 
 	extText := message.Info.Source.Message.ExtendedTextMessage
 	if extText != nil && extText.ContextInfo != nil && extText.ContextInfo.MentionedJid != nil {
@@ -147,9 +147,9 @@ func (b *Bwhatsapp) HandleImageMessage(message whatsapp.ImageMessage) {
 
 	// translate sender's Jid to the nicest username we can get
 	senderName := b.getSenderName(senderJID)
-	if senderName == "" {
+	/*if senderName == "" {
 		senderName = "Someone" // don't expose telephone number
-	}
+	}*/
 
 	b.Log.Debugf("<= Sending message from %s on %s to gateway", senderJID, b.Account)
 	rmsg := config.Message{
